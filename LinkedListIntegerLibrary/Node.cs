@@ -9,8 +9,8 @@ namespace LinkedListIntegerLibrary
     public class Node
     {
         public int Value;
-        public Node Prev;
-        public Node Next;
+        public Node? Prev;
+        public Node? Next;
 
         public Node(int value)
         {
