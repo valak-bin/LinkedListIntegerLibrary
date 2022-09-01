@@ -30,7 +30,7 @@ namespace LinkedListIntegerLibrary
         public void UpdateNodePointers(Node node)
         {
             if (node.Prev != null) node.Prev.Next = node.Next;
-            if(node.Next != null) node.Next.Prev = node.Prev;
+            if (node.Next != null) node.Next.Prev = node.Prev;
             node.Prev = null;
             node.Next = null;
         }
@@ -43,7 +43,7 @@ namespace LinkedListIntegerLibrary
             {
                 Node nodeToRemove = node;
                 node = node.Next;
-                if (nodeToRemove.Value == value) RemoveNode(node);
+                if (nodeToRemove.Value == value) RemoveNode(nodeToRemove);
             }
         }
 
@@ -110,6 +110,30 @@ namespace LinkedListIntegerLibrary
             }
             
             InsertNodeAfter(Tail, node);
+        }
+
+        // Time: O(p) Space: O(1)
+        public void InsertAtPosition(int position, Node nodeToInsert)
+        {
+            if (position == 1)
+            {
+                SetHead(nodeToInsert);
+                return;
+            }
+
+            Node node = Head;
+            int currentPosition = 1;
+
+            while (node != null && currentPosition++ != position)
+            {
+                node = node.Next;
+            }
+
+            if (node != null)
+            {
+                InsertNodeBefore(node, nodeToInsert);
+            }
+            else SetTail(nodeToInsert);
         }
     }
 }
