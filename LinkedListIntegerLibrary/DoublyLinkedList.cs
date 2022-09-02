@@ -8,26 +8,26 @@ namespace LinkedListIntegerLibrary
 {
     public class DoublyLinkedList
     {
-        public Node Head;
-        public Node Tail;
+        public DoublyLinkedNode Head;
+        public DoublyLinkedNode Tail;
 
         // Time: O(n) Space: O(1)
         public bool ContainsNodeWithValue(int value)
         {
-            Node node = Head;
+            DoublyLinkedNode node = Head;
             while (node != null && node.Value != value) node = node.Next;
             return node != null;
         }
 
         // Time: O(1) Space: O(1)
-        public void RemoveNode(Node node)
+        public void RemoveNode(DoublyLinkedNode node)
         {
             if (node == Head) Head = Head.Next;
             if (node == Tail) Tail = Tail.Prev;
             UpdateNodePointers(node);
         }
 
-        public void UpdateNodePointers(Node node)
+        public void UpdateNodePointers(DoublyLinkedNode node)
         {
             if (node.Prev != null) node.Prev.Next = node.Next;
             if (node.Next != null) node.Next.Prev = node.Prev;
@@ -38,17 +38,17 @@ namespace LinkedListIntegerLibrary
         // Time: O(n) Space: O(1)
         public void RemoveNodesWithValue(int value)
         {
-            Node node = Head;
+            DoublyLinkedNode node = Head;
             while (node != null)
             {
-                Node nodeToRemove = node;
+                DoublyLinkedNode nodeToRemove = node;
                 node = node.Next;
                 if (nodeToRemove.Value == value) RemoveNode(nodeToRemove);
             }
         }
 
         // Time: O(1) Space: O(1)
-        public void InsertNodeBefore(Node node, Node nodeToInsert)
+        public void InsertNodeBefore(DoublyLinkedNode node, DoublyLinkedNode nodeToInsert)
         {
             if (nodeToInsert == Head && nodeToInsert == Tail) return;
             RemoveNode(nodeToInsert);
@@ -68,7 +68,7 @@ namespace LinkedListIntegerLibrary
         }
 
         // Time: O(1) Space: O(1)
-        public void InsertNodeAfter(Node node, Node nodeToInsert)
+        public void InsertNodeAfter(DoublyLinkedNode node, DoublyLinkedNode nodeToInsert)
         {
             if (nodeToInsert == Head && nodeToInsert == Tail) return;
             RemoveNode(nodeToInsert);
@@ -88,7 +88,7 @@ namespace LinkedListIntegerLibrary
         }
         
         // Time: O(1) Space: O(1)
-        public void SetHead(Node node)
+        public void SetHead(DoublyLinkedNode node)
         {
             if (Head == null)
             {
@@ -101,7 +101,7 @@ namespace LinkedListIntegerLibrary
         }
 
         // Time: O(1) Space: O(1)
-        public void SetTail(Node node)
+        public void SetTail(DoublyLinkedNode node)
         {
             if (Tail == null)
             {
@@ -113,7 +113,7 @@ namespace LinkedListIntegerLibrary
         }
 
         // Time: O(p) Space: O(1)
-        public void InsertAtPosition(int position, Node nodeToInsert)
+        public void InsertAtPosition(int position, DoublyLinkedNode nodeToInsert)
         {
             if (position == 1)
             {
@@ -121,7 +121,7 @@ namespace LinkedListIntegerLibrary
                 return;
             }
 
-            Node node = Head;
+            DoublyLinkedNode node = Head;
             int currentPosition = 1;
 
             while (node != null && currentPosition++ != position)

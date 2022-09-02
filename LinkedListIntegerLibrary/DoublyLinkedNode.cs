@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace LinkedListIntegerLibrary
 {
-    public class Node
+    public class DoublyLinkedNode
     {
         public int Value;
-        public Node? Prev;
-        public Node? Next;
+        public DoublyLinkedNode? Prev;
+        public DoublyLinkedNode? Next;
 
-        public Node(int value)
+        public DoublyLinkedNode(int value)
         {
             this.Value = value;
+            this.Prev = null;
+            this.Next = null;
         }
     }
 }
