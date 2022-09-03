@@ -56,5 +56,26 @@ namespace LinkedListIntegerLibrary
             // Gets the Next value of our dummy node, which is the head of the linked list
             return newLinkedListHeadPointer.Next;
         }
+
+        public static SinglyLinkedNode ReverseSinglyLinkedList(SinglyLinkedNode head)
+        // Time: O(n)
+        // Space: O(1)
+        {
+            // Declare P1 and P2 pointers
+            SinglyLinkedNode previousNode = null; // previousNode starts before the head
+            SinglyLinkedNode currentNode = head;
+            
+            while (currentNode != null)
+            {
+                // Declare P3 inside each iteration of the while loop so we don't
+                // have to do null checks for P3 every single iteration
+                SinglyLinkedNode nextNode = currentNode.Next;
+                currentNode.Next = previousNode;
+                previousNode = currentNode;
+                currentNode = nextNode;
+            }
+
+            return previousNode;
+        }
     }
 }
