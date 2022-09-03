@@ -10,4 +10,5 @@ The LinkedList&lt;T> generic collection in the .NET base class library limits fu
 
 ## Linked List Methods
 
+- ReverseSinglyLinkedList
 - SumOfSinglyLinkedLists
